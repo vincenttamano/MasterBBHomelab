@@ -15,7 +15,8 @@ Wanted hands-on experience with real server administration — installing Linux 
 | RAM | 4GB |
 | Storage | 240GB Kingmax SSD |
 | OS | Debian 13 (headless, no desktop environment) |
-|Physical Setup Pictures |[Setup](docs/setup/server.jpg)|[2](docs/setup/server-and-mainLaptop.jpg) |
+|Physical Setup Pictures |[Setup](docs/setup/server.jpg),[2](docs/setup/server-and-mainLaptop.jpg)|
+
 
 ## Architecture
 
