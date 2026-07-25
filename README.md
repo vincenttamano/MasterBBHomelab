@@ -1,10 +1,10 @@
 # MasterBBHomelab
 
-A self-hosted home server built from a repurposed Acer laptop — running headless Debian Linux with a Docker-based service stack for media, network management, and remote access.
+A self-hosted home server built from a repurposed Acer laptop running headless Debian Linux with a Docker-based service stack for media, network management, and remote access.
 
 ## Why
 
-Wanted hands-on experience with real server administration — installing Linux from scratch, managing everything over SSH, containerizing services, and thinking through network security — instead of just reading about it. This repo documents that process end to end, including the mistakes.
+Wanted hands-on experience with real server administration installing Linux from scratch, managing everything over SSH, containerizing services, and thinking through network security — instead of just reading about it. This repo documents that process end to end, including the mistakes.
 
 ## Hardware
 
@@ -20,7 +20,8 @@ Wanted hands-on experience with real server administration — installing Linux 
 
 The server runs headless, managed entirely over SSH from a separate main laptop. Services are containerized with Docker and managed via Portainer.
 
-![Network diagram]<img width="788" height="630" alt="MasterbbHomeLab drawio (2)" src="https://github.com/user-attachments/assets/2898b3f1-d0a0-4c9d-9c36-56b7f5337612" />
+## Network Diagram
+<img width="788" height="630" alt="MasterbbHomeLab drawio (2)" src="https://github.com/user-attachments/assets/2898b3f1-d0a0-4c9d-9c36-56b7f5337612" />
 
 
 - **Working Area**: main laptop + phone, on the same flat LAN as the server
