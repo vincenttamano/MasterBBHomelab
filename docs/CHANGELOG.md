@@ -5,12 +5,17 @@ All notable changes to this homelab build are documented here, newest first. For
 ## [Unreleased]
 
 ### Planned
-- Apply UFW firewall rules restricting inbound traffic per service
 - Migrate media stack to Docker Compose
 - Upgrade from UFW-based segmentation to true VLAN isolation once VLAN-capable hardware is available
 - Set up automated backups for service configs
 
-## 2026-07-24 to 2026-07-25
+## 2026-07-25
+
+### Added
+- Applied and verified UFW firewall rules: default-deny inbound policy, LAN-only access per service (192.168.0.0/24), Tailscale interface fully allowed
+- Installed Tailscale on phone for remote access on the go
+
+## 2026-07-24
 
 ### Added
 - Tailscale for encrypted remote access, replacing any need for public port forwarding
