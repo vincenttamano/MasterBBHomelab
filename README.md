@@ -76,6 +76,7 @@ The server runs headless, managed entirely over SSH from a separate main laptop.
 | [Sonarr/Radarr activity](docs/screenshots/sonarr-radarr-activity.png) | Automated media pipeline in action |
 | [SSH session](docs/screenshots/ssh-session.png) | Headless remote server administration |
 | [UFW firewall status](docs/screenshots/ufw-status.png) | Verified firewall rules enforcing segmentation |
+| [Tailscale Demo](docs/screenshots/tailscale-phone.png) | Remote Access on Phone on Different Network |
 
 *(Add each image to `docs/screenshots/` with the filename above, or update the links here to match whatever you name them.)*
 
