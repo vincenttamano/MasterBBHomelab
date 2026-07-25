@@ -51,20 +51,31 @@ The server runs headless, managed entirely over SSH from a separate main laptop.
 | Jul 23, 2026 | Built an automated media system using **Jellyfin** (streaming), **Jellyseerr** (requests), **Sonarr** & **Radarr** (media finding), **Prowlarr** (tracker sync), and **Transmission** (torrent downloader) |
 | Jul 24–25, 2026 | Configured **Tailscale** for secure remote access, and designed network segmentation using **UFW** to allow only specific inbound ports from personal devices to the server while blocking outbound traffic from the server toward them |
 
-## Lessons learned
+Lessons learned
+Debian's netinst doesn't add the first user to the sudo group if you set a separate root password during install — worth knowing before you're locked out of sudo.
+DNS-level ad blocking (Pi-hole) can't stop everything — on-page popups/redirects need a browser-level blocker (uBlock Origin) alongside it.
+Browsers and OSes can have their own DNS settings (e.g. Chrome/Opera's "secure DNS") that silently override your network DNS config — worth checking if Pi-hole seems to not be working.
+Router-level "Guest Network / AP isolation" blocks traffic in both directions, not just one — putting the server there would've also blocked trusted devices from reaching it. Real one-way access (trusted → server allowed, server → trusted blocked) needs a host firewall (UFW) or VLAN rules, not a simple isolation toggle.
+Roadmap
+ Apply UFW firewall rules restricting inbound traffic per service
+ Migrate media stack to Docker Compose
+ Upgrade from software-level segmentation to true VLAN isolation once VLAN-capable hardware is available
+ Set up automated backups for service configs
+Future plans: SOC homelab
 
-- Debian's netinst doesn't add the first user to the `sudo` group if you set a separate root password during install — worth knowing before you're locked out of `sudo`.
-- DNS-level ad blocking (Pi-hole) can't stop everything — on-page popups/redirects need a browser-level blocker (uBlock Origin) alongside it.
-- Browsers and OSes can have their own DNS settings (e.g. Chrome/Opera's "secure DNS") that silently override your network DNS config — worth checking if Pi-hole seems to not be working.
-- Router-level "Guest Network / AP isolation" blocks traffic in both directions, not just one — putting the server there would've also blocked trusted devices from reaching it. Real one-way access (trusted → server allowed, server → trusted blocked) needs a host firewall (UFW) or VLAN rules, not a simple isolation toggle.
+Longer-term goal is to extend this from a media/self-hosting box into a small Security Operations Center (SOC) homelab — giving hands-on practice with the tools and workflows used in real blue-team/SOC roles.
 
-## Roadmap
+Planned additions
 
-- [ ] Apply UFW firewall rules restricting inbound traffic per service
-- [ ] Migrate media stack to Docker Compose
-- [ ] Upgrade from software-level segmentation to true VLAN isolation once VLAN-capable hardware is available
-- [ ] Set up automated backups for service configs
+Wazuh — SIEM/XDR platform for centralized log collection, alerting, and endpoint monitoring across the homelab
+Suricata — network intrusion detection (IDS), watching traffic for known attack signatures and anomalies
+Cowrie — SSH/Telnet honeypot to capture and study real-world attack attempts against the network
+OpenVAS / Greenbone — vulnerability scanning to regularly check the homelab's own services for exposures
+ELK Stack (Elasticsearch, Logstash, Kibana) or Wazuh's built-in stack — log aggregation and dashboarding for the whole environment
+pfSense or OPNsense — replacing the ISP router with a proper firewall, enabling real VLAN segmentation (ties into the network segmentation upgrade already in the Roadmap) and firewall-level logging
 
-## Specs & credits
+Why this direction This builds directly on the segmentation and firewall work already documented above — instead of just blocking traffic, the SOC phase is about observing, detecting, and investigating it. Practical goal: be able to simulate a basic attack against the homelab (e.g. a port scan or brute-force attempt) and walk through detecting it end-to-end in Wazuh/Suricata, the same way a junior SOC analyst would triage an alert.
 
-Built and documented by [Vincent John Tamaño](https://github.com/vincenttamano).
+Specs & credits
+
+Built and documented by Vincent John Tamaño.
