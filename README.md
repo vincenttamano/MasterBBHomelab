@@ -15,6 +15,7 @@ Wanted hands-on experience with real server administration — installing Linux 
 | RAM | 4GB |
 | Storage | 240GB Kingmax SSD |
 | OS | Debian 13 (headless, no desktop environment) |
+|Physical Setup Pictures |{[Setup](docs/setup/server.jpg) |
 
 ## Architecture
 
@@ -76,7 +77,7 @@ The server runs headless, managed entirely over SSH from a separate main laptop.
 | [Sonarr/Radarr activity](docs/screenshots/sonarr-radarr-activity.png) | Automated media pipeline in action |
 | [SSH session](docs/screenshots/ssh-session.png) | Headless remote server administration |
 | [UFW firewall status](docs/screenshots/ufw-status.png) | Verified firewall rules enforcing segmentation |
-| [Tailscale Demo](docs/screenshots/tailscale-phone.png) | Remote Access on Phone on Different Network |
+| [Tailscale Demo](docs/screenshots/tailscale-phone.jpg) | Remote Access on Phone on Different Network |
 
 *(Add each image to `docs/screenshots/` with the filename above, or update the links here to match whatever you name them.)*
 
