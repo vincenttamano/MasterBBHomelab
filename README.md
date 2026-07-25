@@ -72,7 +72,7 @@ The server runs headless, managed entirely over SSH from a separate main laptop.
 | Screenshot | Shows |
 |---|---|
 | [Pi-hole dashboard](docs/screenshots/pihole-dashboard.png) | Query stats, blocked domains, block percentage |
-| [Portainer containers](docs/screenshots/portainer-containers.png),[2](docs/screenshots/portainer-containers.png),[3](docs/screenshots/portainer-containers.png) | Full running service stack |
+| [Portainer containers](docs/screenshots/portainer-containers.png),[2](docs/screenshots/portainer-containers2.png),[3](docs/screenshots/portainer-containers3.png) | Full running service stack |
 | [Cockpit overview](docs/screenshots/cockpit-overview.png) | System health and resource usage |
 | [Jellyfin library](docs/screenshots/jellyfin-library.png) | Media streaming interface |
 | [Radarr activity](docs/screenshots/sonarr-radarr-activity.png),[Sonarr activity](docs/screenshots/sonarr-radarr-activity2.png)| Automated media pipeline in action |
