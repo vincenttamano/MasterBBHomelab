@@ -1,6 +1,6 @@
 # MasterBBHomelab
 
-A self-hosted home server built from a repurposed Acer laptop running headless Debian Linux with a Docker-based service stack for media, network management, and remote access.
+A self-hosted home server built from a repurposed Acer laptop — running headless Debian Linux with a Docker-based service stack for media, network management, and remote access.
 
 ## Why
 
@@ -20,10 +20,11 @@ Wanted hands-on experience with real server administration — installing Linux 
 
 The server runs headless, managed entirely over SSH from a separate main laptop. Services are containerized with Docker and managed via Portainer.
 
-![Network diagram](docs/network-diagram.png)
+![Network diagram]<img width="788" height="630" alt="MasterbbHomeLab drawio (2)" src="https://github.com/user-attachments/assets/2898b3f1-d0a0-4c9d-9c36-56b7f5337612" />
 
-- **Trusted zone**: main laptop + phone, full local network access
-- **Lab zone**: the homelab server, isolated from the trusted zone via router-level guest network / AP isolation
+
+- **Working Area**: main laptop + phone, on the same flat LAN as the server
+- **Lab Area**: the homelab server, reachable from the Working Area on specific allowed ports only (SSH, Pi-hole, Jellyfin, Portainer, Cockpit) — outbound traffic from the server toward personal devices is blocked via UFW
 - **Remote access**: Tailscale only — no ports forwarded directly to the internet
 
 ## Services
@@ -48,13 +49,14 @@ The server runs headless, managed entirely over SSH from a separate main laptop.
 |---|---|
 | Jul 22, 2026 | Installed Debian Linux (replacing the original OS), configured SSH access, removed the GNOME desktop environment to run fully headless, and installed Pi-hole, Docker, Portainer, and Cockpit |
 | Jul 23, 2026 | Built an automated media system using **Jellyfin** (streaming), **Jellyseerr** (requests), **Sonarr** & **Radarr** (media finding), **Prowlarr** (tracker sync), and **Transmission** (torrent downloader) |
-| Jul 24–25, 2026 | Configured **Tailscale** for secure remote access and implemented network segmentation, isolating the server into its own zone separate from trusted personal devices |
+| Jul 24–25, 2026 | Configured **Tailscale** for secure remote access, and designed network segmentation using **UFW** to allow only specific inbound ports from personal devices to the server while blocking outbound traffic from the server toward them |
 
 ## Lessons learned
 
 - Debian's netinst doesn't add the first user to the `sudo` group if you set a separate root password during install — worth knowing before you're locked out of `sudo`.
 - DNS-level ad blocking (Pi-hole) can't stop everything — on-page popups/redirects need a browser-level blocker (uBlock Origin) alongside it.
 - Browsers and OSes can have their own DNS settings (e.g. Chrome/Opera's "secure DNS") that silently override your network DNS config — worth checking if Pi-hole seems to not be working.
+- Router-level "Guest Network / AP isolation" blocks traffic in both directions, not just one — putting the server there would've also blocked trusted devices from reaching it. Real one-way access (trusted → server allowed, server → trusted blocked) needs a host firewall (UFW) or VLAN rules, not a simple isolation toggle.
 
 ## Roadmap
 
